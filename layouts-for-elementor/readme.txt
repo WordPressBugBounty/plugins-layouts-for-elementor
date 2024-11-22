@@ -2,9 +2,9 @@
 Contributors: techeshta, alkesh7, vastarpara, hadihirpara, whereismytie
 Tags: elementor layouts, elementor templates, elementor landing pages, readymade templates, elementor website templates
 Requires at least: 4.4
-Tested up to: 6.6.1
+Tested up to: 6.7
 Requires PHP: 5.6
-Stable tag: 1.9
+Stable tag: 1.10
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -170,18 +170,18 @@ Pro version overcomes your limitations with a lite version of Layouts for Elemen
 > * [Hotel Booking](https://demo.layoutsforelementor.com/hotel-booking/?utm_medium=wp.org&utm_source=wordpressorg&utm_campaign=readme&utm_content=layoutsforelementor)
 > * More coming soon!
 
-### Buy Layouts for Elementor Pro 
+### Buy Layouts for Elementor Pro
 
 [Layouts for Elementor Pro](https://1.envato.market/LFEPro)
 
 ### Technical Support
- 
+
 We're active for any support issues and feature suggestions. So, I hope you will love it. If you have any more questions, visit our support on the [Plugin's Forum](https://wordpress.org/support/plugin/layouts-for-elementor/). 
 
 <strong>Note:</strong> This plugin is an addon of [Elementor Page Builder](https://wordpress.org/plugins/elementor/) and will only work with Elementor page builder installed.
 
 ### Like Layouts for Elementor?
- 
+
 Don't forget to rate us on [WordPress](https://wordpress.org/support/plugin/layouts-for-elementor/reviews/?rate=5#new-post).
 
 == Installation ==
@@ -191,8 +191,8 @@ Don't forget to rate us on [WordPress](https://wordpress.org/support/plugin/layo
 1. Go to Plugins > <strong>Add New</strong>
 2. Search for <strong>Layouts for Elementor</strong>
 3. Click on <strong>Install Now</strong> Button
-4. Click on <strong>Activate Now</strong> After Installed in the Backend 
- 
+4. Click on <strong>Activate Now</strong> After Installed in the Backend
+
 <strong>From WordPress.org</strong>
 
 1. Download <strong>[Layouts for Elementor](https://downloads.wordpress.org/plugin/layouts-for-elementor.zip)</strong>
@@ -206,8 +206,8 @@ Layouts for Elementor give you top-niche readymade landing pages or designs for 
 
 = Can I Import this readymade layout to my Elementor templates library? =
 Yes, you can. Layouts for Elementor plugin allow you to import any design to the Template Library and pages too!
- 
-= Are all the starter templates free? = 
+
+= Are all the starter templates free? =
 Yes, get over 30+ free ready-to-use websites as of now. You can pick a website template that suits your needs.
 
 = Can I change color or customize imported layouts as per my wish? =
@@ -224,6 +224,11 @@ You can reach out via the official [support forum](https://wordpress.org/support
 4. Layouts for Elementor - Install Preview
 
 == Changelog ==
+
+= 1.10 =
+Release Date: November 22nd, 2024
+* Updated: Latest WordPress 6.7 compatibility Check
+* Updated: Latest Elementor 3.25.6 compatibility Check
 
 = 1.9 =
 Release Date: July 26th, 2024
