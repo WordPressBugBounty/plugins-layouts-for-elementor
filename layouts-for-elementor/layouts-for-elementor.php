@@ -4,13 +4,13 @@
  * Plugin Name: Layouts for Elementor
  * Plugin URI: https://www.techeshta.com/product/layouts-for-elementor/
  * Description: Beautifully designed, Free templates, Handcrafted for popular Elementor page builder.
- * Version: 1.10
+ * Version: 1.11
  * Author: Techeshta
  * Author URI: https://www.techeshta.com
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Elementor tested up to: 3.25.6
- * Elementor Pro tested up to: 3.23.1
+ * Elementor tested up to: 3.28.3
+ * Elementor Pro tested up to: 3.28.3
  *
  * Text Domain: layouts-for-elementor
  * Domain Path: /languages/

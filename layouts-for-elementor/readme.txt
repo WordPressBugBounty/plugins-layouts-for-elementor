@@ -2,9 +2,9 @@
 Contributors: techeshta, alkesh7, vastarpara, hadihirpara, whereismytie
 Tags: elementor layouts, elementor templates, elementor landing pages, readymade templates, elementor website templates
 Requires at least: 4.4
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 1.10
+Stable tag: 1.11
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -224,6 +224,11 @@ You can reach out via the official [support forum](https://wordpress.org/support
 4. Layouts for Elementor - Install Preview
 
 == Changelog ==
+
+= 1.11 =
+Release Date: April 22nd, 2025
+* Updated: Latest WordPress 6.8 compatibility Check
+* Updated: Latest Elementor 3.28.3 compatibility Check
 
 = 1.10 =
 Release Date: November 22nd, 2024
