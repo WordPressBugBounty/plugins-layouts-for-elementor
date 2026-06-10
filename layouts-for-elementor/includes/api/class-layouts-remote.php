@@ -1,5 +1,4 @@
 <?php
-
 /**
  * APIs.
  *
@@ -8,7 +7,9 @@
 
 namespace LFE\API;
 
-defined('ABSPATH') || exit;
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 
 /**
  * Handle Remote API requests.
@@ -59,18 +60,27 @@ class Layouts_Remote {
      * @return mixed|\WP_Error
      */
     public function template_sync() {
-		
-		if (!current_user_can('install_plugins')) {
-			return;
-		}
-        $response = $this->templates_list($force_update = true);
-        $response = $this->categories_list($force_update = true);
 
-        if ($response) {
+		// Capability check — only administrators may force a remote sync.
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_die( '-1', 403 );
+        }
+
+        // Nonce verification — the nonce is created in lfw_admin_scripts() as 'ajax-nonce'.
+        if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'ajax-nonce' ) ) {
+            wp_die( '-1', 403 );
+        }
+
+        $response = $this->templates_list( $force_update = true );
+        $response = $this->categories_list( $force_update = true );
+
+        if ( $response ) {
             echo 'success';
         } else {
             echo 'error';
         }
+
+        wp_die();
     }
 
     /**
@@ -83,14 +93,46 @@ class Layouts_Remote {
 
         if (!$response || $force_update) {
 
-            $request = wp_remote_request(self::TEMPLATES);
-            if (!is_wp_error($request)) {
+            // $request = wp_remote_request(self::TEMPLATES);
+            $request = wp_remote_get( esc_url_raw( self::TEMPLATES ), array(
+                'timeout'     => 15,
+                'redirection' => 5,
+                'blocking'    => true,
+                'sslverify'   => true,
+            ) );
+            // if (!is_wp_error($request)) {
 
-                $response = json_decode(wp_remote_retrieve_body($request), true);
-                set_transient(self::TRANSIENT_TEMPLATE, $response, 12 * HOUR_IN_SECONDS);
-            } else {
-                $response = $request->get_error_message();
+            //     $response = json_decode(wp_remote_retrieve_body($request), true);
+            //     set_transient(self::TRANSIENT_TEMPLATE, $response, 12 * HOUR_IN_SECONDS);
+            // } else {
+            //     $response = $request->get_error_message();
+            // }
+            if ( is_wp_error( $request ) ) {
+                return array(
+                    'error'   => true,
+                    'message' => $request->get_error_message(),
+                );
             }
+
+            $body = wp_remote_retrieve_body( $request );
+
+            if ( empty( $body ) ) {
+                return array(
+                    'error'   => true,
+                    'message' => 'Empty API response',
+                );
+            }
+
+            $response = json_decode( $body, true );
+
+            if ( json_last_error() !== JSON_ERROR_NONE ) {
+                return array(
+                    'error'   => true,
+                    'message' => 'Invalid JSON response',
+                );
+            }
+
+            set_transient( self::TRANSIENT_TEMPLATE, $response, 12 * HOUR_IN_SECONDS );
         }
 
         return $response;
@@ -105,14 +147,46 @@ class Layouts_Remote {
 
         if (!$response || $force_update) {
 
-            $request = wp_remote_request(self::CATEGORIES);
-            if (!is_wp_error($request)) {
+            // $request = wp_remote_request(self::CATEGORIES);
+            $request = wp_remote_get( esc_url_raw( self::CATEGORIES ), array(
+                'timeout'     => 15,
+                'redirection' => 5,
+                'blocking'    => true,
+                'sslverify'   => true,
+            ) );
+            // if (!is_wp_error($request)) {
 
-                $response = json_decode(wp_remote_retrieve_body($request), true);
-                set_transient(self::TRANSIENT_CATEGORY, $response, 1 * HOUR_IN_SECONDS);
-            } else {
-                $response = $request->get_error_message();
+            //     $response = json_decode(wp_remote_retrieve_body($request), true);
+            //     set_transient(self::TRANSIENT_CATEGORY, $response, 1 * HOUR_IN_SECONDS);
+            // } else {
+            //     $response = $request->get_error_message();
+            // }
+            if ( is_wp_error( $request ) ) {
+                return array(
+                    'error'   => true,
+                    'message' => $request->get_error_message(),
+                );
             }
+
+            $body = wp_remote_retrieve_body( $request );
+
+            if ( empty( $body ) ) {
+                return array(
+                    'error'   => true,
+                    'message' => 'Empty API response',
+                );
+            }
+
+            $response = json_decode( $body, true );
+
+            if ( json_last_error() !== JSON_ERROR_NONE ) {
+                return array(
+                    'error'   => true,
+                    'message' => 'Invalid JSON response',
+                );
+            }
+
+            set_transient( self::TRANSIENT_CATEGORY, $response, 1 * HOUR_IN_SECONDS );
         }
         return $response;
     }
@@ -126,7 +200,13 @@ class Layouts_Remote {
     public function get_template_content($template_id) {
         $url = sprintf(self::$template_url, $template_id);
 
-        $response = wp_remote_request($url);
+        // $response = wp_remote_request($url);
+        $response = wp_remote_get( esc_url_raw( $url ), array(
+            'timeout'     => 15,
+            'redirection' => 5,
+            'blocking'    => true,
+            'sslverify'   => true,
+        ) );
         if (is_wp_error($response)) {
             return $response;
         }

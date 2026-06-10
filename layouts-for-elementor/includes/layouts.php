@@ -1,3 +1,11 @@
+<?php
+/*
+ * Exit if accessed directly
+ */
+if (!defined('ABSPATH')) {
+    exit;
+}
+?>
 <div class="lfe-body">
     <div class="lfe-header">
         <h1 class="wp-heading-inline"><?php esc_html_e('Layouts for Elementor', 'layouts-for-elementor'); ?></h1>

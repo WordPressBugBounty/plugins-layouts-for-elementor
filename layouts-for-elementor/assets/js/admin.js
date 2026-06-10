@@ -94,7 +94,9 @@ jQuery(document).ready(function () {
                 jQuery('.lfe-sync-btn').text(js_object.lfe_sync);
             },
             success: function (res) {
-                var res = res.slice(0, -1);
+
+                // var res = res.slice(0, -1);
+
                 if (res == 'success') {
                     setTimeout(function () {
                         Toastify({
@@ -122,6 +124,11 @@ jQuery(document).ready(function () {
                         window.location.href = lef_cur_url;
                     }, 5000);
                 }
+
+                // redirect (common)
+                setTimeout(function () {
+                    window.location.href = lef_cur_url;
+                }, 5000);
             },
 
         });

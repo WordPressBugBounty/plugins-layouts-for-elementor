@@ -1,10 +1,10 @@
 === Layouts for Elementor ===
 Contributors: techeshta, alkesh7, vastarpara, hadihirpara, whereismytie
 Tags: elementor layouts, elementor templates, elementor landing pages, readymade templates, elementor website templates
-Requires at least: 4.4
-Tested up to: 6.8
-Requires PHP: 5.6
-Stable tag: 1.11
+Requires at least: 6.0
+Tested up to: 7.0
+Requires PHP: 7.4
+Stable tag: 1.12.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,7 +38,7 @@ Layouts for Elementor plugin suitable for all kinds of one-page WordPress websit
 * Beauty Related Website
 * Etc.
 
-### Precisely Designed 50+ Layouts 
+### Precisely Designed 50+ Layouts
 
 We have designed a stunning landing page for you to complete your landing page website in less time. You can use the default settings for each template or modify it as per your need.
 
@@ -225,6 +225,16 @@ You can reach out via the official [support forum](https://wordpress.org/support
 
 == Changelog ==
 
+= 1.12.1 =
+Release Date: April 28th, 2026
+* Fixed: Problems affecting API callback reliability and execution
+
+= 1.12 =
+Release Date: April 27th, 2026
+* Updated Latest WordPress 6.9 compatibility Check
+* Security: Fixed cross-site scripting (XSS) vulnerability
+* Improved overall plugin security
+
 = 1.11 =
 Release Date: April 22nd, 2025
 * Updated: Latest WordPress 6.8 compatibility Check
@@ -300,7 +310,7 @@ Release Date: June 6th, 2019
 
 * Added: New 10+ Layouts
 * Updated: UI improvements
-* Fixed: Layouts Category AutoSync issue 
+* Fixed: Layouts Category AutoSync issue
 
 = 1.2.1 =
 Release Date: May 6th, 2019

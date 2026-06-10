@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Class for importing a template.
  *
@@ -13,6 +12,10 @@ use Elementor\TemplateLibrary\Source_Remote;
 use Elementor\TemplateLibrary\Classes\Images;
 use Elementor\Api;
 use Elementor\Plugin;
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 
 /**
  * Class for importing a template.
@@ -42,14 +45,14 @@ class Layouts_Importer extends Source_Remote {
         if (!current_user_can('install_plugins')) {
 			return;
 		}
-        
+
         if ( wp_verify_nonce( $_POST['nonce'], 'ajax-nonce' ) ) {
-            $template_id = $_POST['template_id'];
-            $with_page = $_POST['with_page'];
+            $template_id = sanitize_text_field( $_POST['template_id'] );
+            $with_page = sanitize_text_field( $_POST['with_page'] );
             $method = $with_page ? 'page' : 'library';
 
             $template = Layouts_Remote::lfe_get_instance()->get_template_content($template_id);
-            
+
             if (is_wp_error($template)) {
                 return $template;
             }
