@@ -3,7 +3,7 @@
  * Plugin Name: Layouts for Elementor
  * Plugin URI: https://www.techeshta.com/product/layouts-for-elementor/
  * Description: Beautifully designed, Free templates, Handcrafted for popular Elementor page builder.
- * Version: 1.12.2
+ * Version: 1.12.3
  * Author: Techeshta
  * Author URI: https://www.techeshta.com
  * License: GPLv2 or later
@@ -50,7 +50,6 @@ class Layout_For_Elementor {
      * Initialize
      */
     public function hooks() {
-        add_action('plugins_loaded', array($this, 'lfe_load_language_files'));
         add_action('admin_enqueue_scripts', array($this, 'lfe_admin_scripts',));
     }
 
@@ -62,13 +61,6 @@ class Layout_For_Elementor {
             include_once( LFE_DIR . 'includes/class-layout-importer.php' );
             include_once( LFE_DIR . 'includes/api/class-layouts-remote.php' );
         }
-    }
-
-    /**
-     * @return Loads plugin textdomain
-     */
-    public function lfe_load_language_files() {
-        load_plugin_textdomain(LFE_TEXTDOMAIN, false, dirname(plugin_basename(__FILE__)) . '/languages');
     }
 
     /**
@@ -165,7 +157,8 @@ class Layout_For_Elementor {
             )
         );
 
-        if ((isset($_GET['page']) && ( $_GET['page'] == 'lfe_layouts' || $_GET['page'] == 'lfe_started'))) {
+        $screen_id = $screen ? $screen->id : '';
+        if (in_array($screen_id, array('toplevel_page_lfe_layouts', 'layouts_page_lfe_started'), true)) {
             wp_enqueue_style('lfe-admin-stylesheets');
             wp_enqueue_style('lfe-toastify-stylesheets');
             wp_enqueue_script('lfe-toastify-script');
@@ -180,14 +173,14 @@ class Layout_For_Elementor {
      * add menu at admin panel
      */
     public function lfe_menu() {
-        add_menu_page(__('Layouts', 'layouts-for-elementor'), __('Layouts', 'layouts-for-elementor'), 'administrator', 'lfe_layouts', 'lfe_layouts_function', LFE_URL . 'assets/images/layouts-for-elementor.png');
+        add_menu_page(__('Layouts', 'layouts-for-elementor'), __('Layouts', 'layouts-for-elementor'), 'manage_options', 'lfe_layouts', 'layouts_for_elementor_render_layouts_page', LFE_URL . 'assets/images/layouts-for-elementor.png');
 
         /**
          *
          * @global type $wp_version
          * @return html Display setting options
          */
-        function lfe_layouts_function() {
+        function layouts_for_elementor_render_layouts_page() {
             include_once( 'includes/layouts.php' );
         }
 
