@@ -7,7 +7,7 @@
 
 namespace Elementor\TemplateLibrary;
 
-use LFE\API\Layouts_Remote;
+use Layouts_For_Elementor\API\Layouts_Remote;
 use Elementor\TemplateLibrary\Source_Remote;
 use Elementor\TemplateLibrary\Classes\Images;
 use Elementor\Api;
@@ -35,7 +35,6 @@ class Layouts_Importer extends Source_Remote {
      */
     public function hooks() {
         add_action('wp_ajax_handle_import', array($this, 'handle_import'));
-        add_action('wp_ajax_nopriv_handle_import', array($this, 'handle_import'));
     }
 
     /**
@@ -46,9 +45,9 @@ class Layouts_Importer extends Source_Remote {
 			return;
 		}
 
-        if ( wp_verify_nonce( $_POST['nonce'], 'ajax-nonce' ) ) {
-            $template_id = sanitize_text_field( $_POST['template_id'] );
-            $with_page = sanitize_text_field( $_POST['with_page'] );
+        if ( isset( $_POST['nonce'], $_POST['template_id'], $_POST['with_page'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'ajax-nonce' ) ) {
+            $template_id = absint( $_POST['template_id'] );
+            $with_page = sanitize_text_field( wp_unslash( $_POST['with_page'] ) );
             $method = $with_page ? 'page' : 'library';
 
             $template = Layouts_Remote::lfe_get_instance()->get_template_content($template_id);
