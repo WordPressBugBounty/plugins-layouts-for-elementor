@@ -5,7 +5,7 @@
  * @package LFE
  */
 
-namespace Layouts_For_Elementor\API;
+namespace LFE\API;
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Handle Remote API requests.
  *
- * @package Layouts_For_Elementor\API
+ * @package LFE\API
  */
 class Layouts_Remote {
 
@@ -52,6 +52,7 @@ class Layouts_Remote {
      */
     public function hooks() {
         add_action('wp_ajax_handle_sync', array($this, 'template_sync'));
+        add_action('wp_ajax_nopriv_handle_sync', array($this, 'template_sync'));
     }
 
     /**
