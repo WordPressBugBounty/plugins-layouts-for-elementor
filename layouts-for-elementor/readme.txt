@@ -4,7 +4,7 @@ Tags: elementor layouts, elementor templates, elementor landing pages, readymade
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.12.3
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -182,7 +182,7 @@ We're active for any support issues and feature suggestions. So, I hope you will
 
 ### Like Layouts for Elementor?
 
-Don't forget to rate us on [WordPress](https://wordpress.org/support/plugin/layouts-for-elementor/reviews/?rate=5#new-post).
+Don't forget to rate us on [WordPress](https://wordpress.org/support/plugin/layouts-for-elementor/reviews/#new-post).
 
 == Installation ==
 
@@ -224,6 +224,13 @@ You can reach out via the official [support forum](https://wordpress.org/support
 4. Layouts for Elementor - Install Preview
 
 == Changelog ==
+
+= 2.0 =
+Release Date: September 24th, 2026
+* Security: Improved template import validation and ID handling.
+* Fixed: Import AJAX errors and admin page path issues.
+* Updated: Elementor 4.2.4 compatibility.
+* Removed: Unused code and script enqueue.
 
 = 1.12.3 =
 Release Date: August 22nd, 2026
